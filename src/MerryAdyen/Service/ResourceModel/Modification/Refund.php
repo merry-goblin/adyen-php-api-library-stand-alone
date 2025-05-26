@@ -23,7 +23,9 @@ class Refund extends \MerryAdyen\Service\AbstractResource
      */
     public function __construct($service)
     {
-        $this->endpoint = $service->getClient()->getConfig()->get('merry.modificationEndpoint').'/refunds';
+        $this->endpoint = $service->getClient()->getConfig()->get('merry.modificationEndpoint');
+        $addSlash = substr($this->endpoint, -1) !== '/' ? '/': '';
+        $this->endpoint .= $addSlash . 'refunds';
         parent::__construct($service, $this->endpoint, $this->allowApplicationInfo);
     }
 }
