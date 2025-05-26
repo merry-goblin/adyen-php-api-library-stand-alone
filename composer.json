@@ -1,0 +1,25 @@
+{
+  "name": "merry-goblin/adyen-php-api-library-stand-alone",
+  "type": "library",
+  "description": "A PHP client library for accessing Adyen APIs",
+  "keywords": [
+    "adyen"
+  ],
+  "homepage": "https://github.com/merry-goblin/adyen-php-api-library-stand-alone",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.4",
+    "ext-ctype": "*",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-openssl": "*",
+    "monolog/monolog": "^1.16 || ^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Adyen\\": "src/Adyen/",
+      "MerryAdyen\\": "src/MerryAdyen/"
+    }
+  }
+}
