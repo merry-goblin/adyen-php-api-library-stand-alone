@@ -115,21 +115,8 @@ class CurlClient implements ClientInterface
         // return the result
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-        // debug
-        $this->debug(__FILE__, __LINE__, 'requestJson -> curl call');
-        $this->debug(__FILE__, __LINE__, '$requestUrl: '.$requestUrl);
-        $this->debug(__FILE__, __LINE__, '$jsonRequest: '.$jsonRequest);
-        $this->debug(__FILE__, __LINE__, '$headers: '.print_r($headers, true));
-        $this->debug(__FILE__, __LINE__, '$httpProxy: '.print_r($httpProxy, true));
-        $this->debug(__FILE__, __LINE__, '$username: '.print_r($username, true));
-        $this->debug(__FILE__, __LINE__, '$password: '.print_r($password, true));
-
         //Execute the request
         list($result, $httpStatus) = $this->curlRequest($ch);
-
-        // debug
-        $this->debug(__FILE__, __LINE__, '$result: '.print_r($result, true));
-        $this->debug(__FILE__, __LINE__, '$httpStatus: '.print_r($httpStatus, true));
 
         // log the response
         $decodedResult = json_decode($result, true);
@@ -237,21 +224,8 @@ class CurlClient implements ClientInterface
         // return the result
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-        // debug
-        $this->debug(__FILE__, __LINE__, 'requestPost -> curl call');
-        $this->debug(__FILE__, __LINE__, '$requestUrl: '.$requestUrl);
-        $this->debug(__FILE__, __LINE__, '$params: '.print_r($params, true));
-        $this->debug(__FILE__, __LINE__, '$headers: '.print_r($headers, true));
-        $this->debug(__FILE__, __LINE__, '$httpProxy: '.print_r($httpProxy, true));
-        $this->debug(__FILE__, __LINE__, '$username: '.print_r($username, true));
-        $this->debug(__FILE__, __LINE__, '$password: '.print_r($password, true));
-
         //Execute the request
         list($result, $httpStatus) = $this->curlRequest($ch);
-
-        // debug
-        $this->debug(__FILE__, __LINE__, '$result: '.print_r($result, true));
-        $this->debug(__FILE__, __LINE__, '$httpStatus: '.print_r($httpStatus, true));
 
         // log the response
         $decodedResult = json_decode($result, true);
@@ -459,10 +433,5 @@ class CurlClient implements ClientInterface
         $errno = curl_errno($ch);
         $message = curl_error($ch);
         return array($errno, $message);
-    }
-
-    protected function debug(string $file, int $line, string $message)
-    {
-        error_log('file: '.$file.' line: '.$line.' message: '.$message);
     }
 }
